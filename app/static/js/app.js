@@ -87,7 +87,7 @@ const register = {
   </div> 
  
   <form @submit.prevent="registerUser" method="POST" enctype="multipart/form-data" id="register_form">
-  <div class="forms">
+  <div class="form-group">
       <label> Username </label><br>
       <input type="text" name="username"><br>
       <label> Password </label><br>
