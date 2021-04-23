@@ -137,7 +137,6 @@ const register = {
 
 };  
   
-}
 const logout = {
   name: 'logout',
   template:`
