@@ -82,17 +82,6 @@ mounted() {
 const register = {
   name: 'register',
   template:`
-  `
-}
-const logout = {
-  name: 'logout',
-  template:`
-  `
-}
-
-const users = {
-  name: 'users',
-  template:`
   <div id="new_user">
   <h2> Registration </h2>
   </div> 
@@ -118,10 +107,11 @@ const users = {
       <button class="btn btn-primary mb-2"> Register </button>
   </form>
   </div> 
-  `,
+  `'
   
-   methods: {
+ methods: {
     registerUser(){
+        let self = this;
         let register_Form = document.getElementById('register_Form');
         let userData = new FormData(register_Form);
         fetch("/api/register", {
@@ -145,7 +135,20 @@ const users = {
         }
 },  
 
-}; 
+};  
+  
+}
+const logout = {
+  name: 'logout',
+  template:`
+  `
+}
+
+const users = {
+  name: 'users',
+  template:`  
+  `
+} 
 
 
 const cars = {
