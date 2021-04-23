@@ -93,8 +93,60 @@ const logout = {
 const users = {
   name: 'users',
   template:`
-  `
-}
+  <div id="new_user">
+  <h2> Registration </h2>
+  </div> 
+ 
+  <form @submit.prevent="registerUser" method="POST" enctype="multipart/form-data" id="register_form">
+  <div class="forms">
+      <label> Username </label><br>
+      <input type="text" name="username"><br>
+      <label> Password </label><br>
+      <input type="text" name="password"><br>
+      <label> Fullname </label><br>
+      <input type="text" name="fullname"><br>
+
+      <label> Email </label><br>
+      <input type="text" name="email"><br>
+      <label> Location </label><br>
+      <input type="text" name="location"><br>
+      <label> Biography </label><br>
+      <textarea name="bio"> </textarea><br>
+      <label> Upload Photo: </label><br>
+      <input type="file" name="pic">
+  </div>
+      <button class="btn btn-primary mb-2"> Register </button>
+  </form>
+  </div> 
+  `,
+  
+   methods: {
+    registerUser(){
+        let register_Form = document.getElementById('register_Form');
+        let userData = new FormData(register_Form);
+        fetch("/api/register", {
+            method: 'POST',
+            body: userData,
+            headers: {
+                'X-CSRFToken': token
+                 },
+                 credentials: 'same-origin'
+           })
+            .then(function (response) {
+            return response.json();
+            })
+            .then(function (jsonResponse) {
+            console.log(jsonResponse);
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
+
+        }
+},  
+
+}; 
+
 
 const cars = {
   name: 'newcar',
